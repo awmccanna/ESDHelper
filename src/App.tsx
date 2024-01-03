@@ -1,24 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import '@picocss/pico';
+import AppButton from './components/app-button';
+import JobApplication from './types/job-application';
+import JobTable from './components/job-table';
+
+const applicationHistory: JobApplication[] = [{
+  company: 'place',
+  position: 'hold',
+  url: 'er.com',
+  appliedDate: new Date(),
+}]
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="css/pico.min.css" />
+        <title>ESD Assistant</title>
       </header>
+      <body>
+        <main className="container">
+          <h4>Existing Applications</h4>
+          <JobTable applicationHistory={applicationHistory}></JobTable>
+          <AppButton label='Add Application'></AppButton>
+        </main>
+      </body>
     </div>
   );
 }
